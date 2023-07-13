@@ -38,7 +38,3 @@ Feel free to reach out to me! Let's connect and create something fun together.
 - Email: john.doe@example.com
 - LinkedIn: [John Doe](https://www.linkedin.com/in/johndoe)
 - Portfolio: [My Colorful Creations](https://www.myportfolio.com/johndoe)
-
-## :page_with_curl: License
-
-This resume is licensed under the [Creative Commons Attribution 4.0 International License](https://creativecommons.org/licenses/by/4.0/).
