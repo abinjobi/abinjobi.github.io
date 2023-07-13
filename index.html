@@ -6,6 +6,19 @@
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <title>Abin Jobi's Resume</title>
 </head>
+  <style>
+    body {
+      background: linear-gradient(45deg, #d9e8ff,  #f7f8d9, #ffd9d9);
+      background-size: 200% 200%;
+      animation: gradientAnimation 10s ease infinite;
+    }
+
+    @keyframes gradientAnimation {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+  </style>
 <body class="bg-gray-100">
   <div class="container mx-auto py-8 px-4">
     <div class="flex items-center justify-between mb-8">
