@@ -1,4 +1,4 @@
-# John Doe's Fun and Colorful Resume :rainbow:
+# Jobi's Fun and Colorful Resume :rainbow:
 
 ## About Me :star:
 
@@ -6,7 +6,7 @@ Hey there! I'm John, a passionate web developer who loves coding and spreading j
 
 ## Experience :briefcase:
 
-### Web Developer - Company A :rocket:
+### Web Developer - Company A :Steps software solutions:
 
 - Developed interactive websites using HTML, CSS, and JavaScript.
 - Collaborated with design teams to create visually stunning user interfaces.
