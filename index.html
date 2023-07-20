@@ -133,5 +133,29 @@
   </div>
 <!--   <marquee>bye...</marquee> -->
 </body>
-  
+    <script>
+    // Service Worker Registration
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('data:application/javascript,' + encodeURIComponent(`
+          const CACHE_NAME = 'my-pwa-cache-v1';
+          const urlsToCache = [ 'https://lh3.googleusercontent.com/ogw/AGvuzYaFsql2qvp7yuTOnKseViaaInJNeajoLAviZTgruwA=s3200-c-mo'];
+
+          self.addEventListener('install', event => {
+            event.waitUntil(
+              caches.open(CACHE_NAME)
+                .then(cache => cache.addAll(urlsToCache))
+            );
+          });
+
+          self.addEventListener('fetch', event => {
+            event.respondWith(
+              caches.match(event.request)
+                .then(response => response || fetch(event.request))
+            );
+          });
+        `));
+      });
+    }
+  </script>
 </html>
