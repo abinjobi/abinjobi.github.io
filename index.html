@@ -137,9 +137,10 @@
     // Service Worker Registration
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('data:application/javascript,' + encodeURIComponent(`
+        const serviceWorkerCode = `
           const CACHE_NAME = 'my-pwa-cache-v1';
-          const urlsToCache = [ 'https://lh3.googleusercontent.com/ogw/AGvuzYaFsql2qvp7yuTOnKseViaaInJNeajoLAviZTgruwA=s3200-c-mo'];
+          const urlsToCache = [
+'https://lh3.googleusercontent.com/ogw/AGvuzYaFsql2qvp7yuTOnKseViaaInJNeajoLAviZTgruwA=s3200-c-mo'];
 
           self.addEventListener('install', event => {
             event.waitUntil(
@@ -154,7 +155,18 @@
                 .then(response => response || fetch(event.request))
             );
           });
-        `));
+        `;
+
+        const blob = new Blob([serviceWorkerCode], { type: 'application/javascript' });
+        const blobURL = URL.createObjectURL(blob);
+
+        navigator.serviceWorker.register(blobURL)
+          .then(registration => {
+            console.log('Service worker registered:', registration);
+          })
+          .catch(error => {
+            console.error('Service worker registration failed:', error);
+          });
       });
     }
   </script>
