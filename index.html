@@ -11,7 +11,7 @@
       justify-content: center;
       align-items: center;
       min-height: 100vh;
-      background: linear-gradient(45deg, #d9e8ff,  #f7f8d9, #ffd9d9);
+      background: linear-gradient(45deg, #d9e8ff, #f7f8d9, #ffd9d9);
       background-size: 200% 200%;
       animation: gradientAnimation 10s ease infinite;
       margin: 0;
@@ -29,6 +29,13 @@
       border-radius: 10px;
       background-color: white;
       box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Media query for mobile devices */
+    @media (max-width: 640px) {
+      body {
+        background: #f0f0f0; /* Change to the desired background color */
+      }
     }
   </style>
 </head>
@@ -142,11 +149,39 @@
       </ul>
     </section>
 
-
+<p>IP Address: <span id="ip-address"></span></p>
+    <p>Country: <span id="country"></span></p>
+    <p>Organization: <span id="organization"></span></p>
   </div>
+
   </div>
 </body>
 <script>
-  console.log('nothing here to see, simply waste....😇');
-</script>
+        // Function to fetch data from the URL and update the HTML content
+        function fetchAndDisplayData() {
+            fetch('https://ipinfo.io/json')
+                .then(response => response.json())
+                .then(data => {
+                    const ipAddress = data.ip;
+                    const country = data.country;
+                    let organization = data.org;
+
+                    // Split the organization string by spaces and remove the first part
+                    const orgParts = organization.split(' ');
+                    orgParts.shift(); // Remove the first part
+                    organization = orgParts.join(' '); // Join the remaining parts back together
+
+                    // Update the HTML content with the fetched data
+                    document.getElementById('ip-address').textContent = ipAddress;
+                    document.getElementById('country').textContent = country;
+                    document.getElementById('organization').textContent = organization;
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        }
+
+        // Call the function to fetch and display data when the page loads
+        window.onload = fetchAndDisplayData;
+    </script>
 </html>
